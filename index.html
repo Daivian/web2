@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metal vs Concreto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Metal vs Concreto</h1>
+    <h2>En esta calculadora se analizará mediante criterios propios, qué tan bueno es uno sobre otro.</h2>
+    <div class="equation-box">
+        <p>Factibilidad = 
+            <input type="number" id="factor-resistencia" value="25" min="0" max="100" step="1" oninput="actualizarSuma()">% (resistencia de materiales) - 
+            <input type="number" id="factor-costo" value="25" min="0" max="100" step="1" oninput="actualizarSuma()">% (costo de materiales) - 
+            <input type="number" id="factor-tiempo" value="25" min="0" max="100" step="1" oninput="actualizarSuma()">% (tiempo de construcción) + 
+            <input type="number" id="factor-vida" value="25" min="0" max="100" step="1" oninput="actualizarSuma()">% (vida útil)
+        </p>
+        <p>La suma de las casillas debe ser igual a 100.</p>
+        <p id="suma-factores">Suma actual: 100%</p>
+    </div>
+
+    <div class="factibilidad">
+        <div class="calculator metal">
+            <h3>Metal</h3>
+            <div class="input-group">
+                <label for="metal-resistencia">Resistencia de materiales (kg/cm²):</label>
+                <input type="number" id="metal-resistencia">
+            </div>
+            <div class="input-group">
+                <label for="metal-costo">Costo de materiales (soles/m²):</label>
+                <input type="number" id="metal-costo">
+            </div>
+            <div class="input-group">
+                <label for="metal-tiempo">Tiempo de construcción (días):</label>
+                <input type="number" id="metal-tiempo">
+            </div>
+            <div class="input-group">
+                <label for="metal-vida">Vida útil (años):</label>
+                <input type="number" id="metal-vida" value="100">
+            </div>
+        </div>
+
+        <div class="calculator concrete">
+            <h3>Concreto</h3>
+            <div class="input-group">
+                <label for="concreto-resistencia">Resistencia de materiales (kg/cm²):</label>
+                <input type="number" id="concreto-resistencia">
+            </div>
+            <div class="input-group">
+                <label for="concreto-costo">Costo de materiales (soles/m²):</label>
+                <input type="number" id="concreto-costo">
+            </div>
+            <div class="input-group">
+                <label for="concreto-tiempo">Tiempo de construcción (días):</label>
+                <input type="number" id="concreto-tiempo">
+            </div>
+            <div class="input-group">
+                <label for="concreto-vida">Vida útil (años):</label>
+                <input type="number" id="concreto-vida" value="50">
+            </div>
+        </div>
+    </div>
+
+    <div id="chartContainer" class="graph"></div>
+
+    <div class="factibilidad-normalizada">
+        <h3>Factibilidad Normalizada</h3>
+        <p>(Factibilidad de metal / Factibilidad de concreto) x 100%</p>
+        <button onclick="calcularFactibilidad()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
